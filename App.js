@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import EmployeeSelectionScreen from './screens/EmployeeSelectionScreen';
+import ResultScreen from './screens/ResultScreen';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const Stack = createStackNavigator();
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const AppNavigator = () => (
+  <NavigationContainer>
+    <Stack.Navigator initialRouteName="EmployeeSelection">
+      <Stack.Screen name="EmployeeSelection" component={EmployeeSelectionScreen} />
+      <Stack.Screen name="Result" component={ResultScreen} />
+    </Stack.Navigator>
+  </NavigationContainer>
+);
+
+export default AppNavigator;
